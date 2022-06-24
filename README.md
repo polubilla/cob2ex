@@ -37,7 +37,16 @@ _Ref_: [The Truth About COBOL and the World Economy.  By Reg Harbeck / July 19, 
 Dynamic, functional language designed for building scalable and maintainable applications. Elixir leverages the Erlang VM, known for running low-latency, distributed and fault-tolerant systems, while also being successfully used in web development and the embedded software domain
 
 ## Technical Analysis  
-General strategy of the process
+Description of the process:
+
+```mermaid
+graph LR;    
+    Code-OL-- Parsing -->AST-OL;
+    AST-OL-- Transform1 -->InterModel;
+    InterModel-- Transform2 -->AST-TL;
+    AST-TL-- CodeGen -->Code-TL;
+```
+
 * **Stage 1: Scanning / Parsing**  
 * * Input   : Code in the original language  
 * * Process :   
