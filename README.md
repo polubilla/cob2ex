@@ -1,9 +1,18 @@
 # cob2ex
 COBOL to Elixir translator
 
+<!-- Un comentario -->
+### Table of Content
+* [Motivation](#motivation)  
+* [Technical Analysis](#technical-analysis)  
+* [Tools Analysis](#tools-analysis)  
+* [Ecosystem](#ecosystem)  
+* [General Considerations](#general-considerations)  
+* [Miscelanous references](#misc-references)
 
-## Motivation
 
+## Motivation  
+**COBOL**
 * 70-80% of all business transactions worldwide are written in COBOL
 * 60 million patients are cared for daily with COBOL programs
 * 95% of all ATM transactions are processed using COBOL
@@ -23,14 +32,38 @@ _Ref_: [The Truth About COBOL and the World Economy.  By Reg Harbeck / July 19, 
 
 * UK bank TSB was forced to migrate their COBOL systems due to a buyout in 2018, the bank was unable to trade in days, the cost of the migrating cost them 330 million pounds, that is not all, they also lost 49 million pounds from financial fraud while their systems were down. The bank had more than 200000 customer complaints, the chief executive had to resign.
 
+---
+**Elixir**  
+Dynamic, functional language designed for building scalable and maintainable applications. Elixir leverages the Erlang VM, known for running low-latency, distributed and fault-tolerant systems, while also being successfully used in web development and the embedded software domain
 
-## Technical analysis
-Descripción de la estrategia según Tomassetti
+## Technical Analysis  
+General strategy of the process
+* **Stage 1: Scanning / Parsing**  
+* * Input   : Code in the original language  
+* * Process :   
+* * * *Scanning* Consumes the plain text of the code file, group together individual characters to form tokens (lexer) 
+* * * *Parsing* Consumes tokens and groups them together into complete statements and expression. The Parser is guided by a grammar
+* * Output  : AST-OL::AST of the original language  
 
-_Ref_ [How to write a transpiler](https://tomassetti.me/how-to-write-a-transpiler/)
+* **Stage 2: Transformation 1**
+* * Input   : AST-OL
+* * Process : *Semantic analysis* Traverse the AST-OL and derive additional meaning (semantis) about the program from the rules of the language and the relationship between elements of the program.
+* * Output  : Intermediate Model
+ 
+* **Stage 3: Transformation 2**
+* * Input   : Intermediate Model 
+* * Process : Convert the Intermediate Model (intermediate AST) into an AST of the target language
+* * Output  : AST-TL::AST of the target language
+ 
+* **Stage 4: Code generation**
+* * Input   : AST-TL
+* * Process : Convert the AST of the target language into valid *target language code*
+* * Output  : Code in the target language
+
+_Ref_ [How to write a transpiler - F.Tomassetti](https://tomassetti.me/how-to-write-a-transpiler/)
 
 
-## Tools analysis
+## Tools Analysis  
 
 + Lexers/Parsers
 + + Lex-Yacc
@@ -39,14 +72,17 @@ _Ref_ [How to write a transpiler](https://tomassetti.me/how-to-write-a-transpile
 + ANTLR
 + Xtext
 
-## Ecosystem 
+## Ecosystem   
 Cobol, RPG, JCL, CICS, DB2  
 
-## General considerations
+## General Considerations  
 Introducción a las consideraciones generales. 
 
 _Ref1_: [Why COBOL isn’t the problem](https://www.lucidchart.com/techblog/2020/11/13/why-cobol-isnt-the-problem/)  
 _Ref2_: [COBOL Isn’t the issue: a misinterpreted crisis](https://hackaday.com/2020/04/20/cobol-isnt-the-issue-a-misinterpreted-crisis/)
 
+<!-- "" Mainframes are around not just because of COBOL, but because of a whole ecosystem of things like Db2 and CICS. (CICS might be interesting to map to the BEAM model though..) -->
 
+## Misc References
+[Implementing Domain-Specific Languages with Xtext and Xtend - Lorenzo Bettini](https://www.amazon.com/-/es/Lorenzo-Bettini/dp/1786464969)  
 
