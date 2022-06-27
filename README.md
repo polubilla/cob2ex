@@ -4,7 +4,7 @@ Work In Progress...
 
 <!-- Un comentario -->
 ### Table of Content
-* [Motivation](/cob2ex/motivation)  
+* [Motivation](documentation/motivation.md)  
 * [Technical Analysis](#technical-analysis)  
 * [Tools Analysis](#tools-analysis)  
 * [Ecosystem](#ecosystem)  
