@@ -31,4 +31,10 @@ graph LR;
 * * Process : Convert the AST of the target language into valid *target language code*
 * * Output  : Code in the target language
 
+
+>We start from code, in the original language, and arrive to code, in the target language. To perform the transformation, however, we will not work directly on code. Instead, we will work on a representation of the code that would make this operation easier and more maintainable. This representation is the abstract syntax tree (AST).  
+So our transpiler will have these stages:
+Parsing stage: we will adopt a parser to obtain an AST from the code of the original language   
+Transformation stage: we will transform in one or more steps the AST of the original language into the corresponding AST of the target language   
+Generation stage: once we have the AST of the target language we generate the corresponding code out of it   
 _Ref_ [How to write a transpiler - F.Tomassetti](https://tomassetti.me/how-to-write-a-transpiler/)
